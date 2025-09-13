@@ -33,13 +33,17 @@ namespace ProductApps
             {
                 decimal totalAfterDelivery = 0;
                 decimal totalAfterWrapping = 0;
+                decimal totalAfterGST = 0;
+                decimal gstCharge = 1.1m;
                 cProduct = new Product(Convert.ToDecimal(priceTextBox.Text), Convert.ToInt16(quantityTextBox.Text));
                 cProduct.calTotalPayment();
                 totalAfterDelivery = cProduct.TotalPayment + 25;
                 totalAfterWrapping = totalAfterDelivery + 5;
+                totalAfterGST = totalAfterWrapping * gstCharge;
                 totalPaymentTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
                 totalChargeTextBox.Text = totalAfterDelivery.ToString();
                 totalChargeWithWrappingTextBox.Text = totalAfterWrapping.ToString();
+                totalChargeWithGSTTextBox.Text = totalAfterGST.ToString();
             }
             catch (FormatException)
             {
